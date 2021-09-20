@@ -1,5 +1,3 @@
-
-
 //
 //  BaseViewController.m
 //  WeChat
@@ -10,38 +8,38 @@
 
 #import "BaseViewController.h"
 
-@implementation BaseViewController
+@interface BaseViewController ()
 
+@end
+
+@implementation BaseViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDarkContent;
 
-    
-  
-        
-            //using it for size debug
-//            [MMPlaceHolderConfig defaultConfig].lineColor = [UIColor redColor];
-//            [MMPlaceHolderConfig defaultConfig].lineWidth = 1;
-//            [MMPlaceHolderConfig defaultConfig].arrowSize = 5;
-//            [MMPlaceHolderConfig defaultConfig].backColor = [UIColor clearColor];
-//            [MMPlaceHolderConfig defaultConfig].frameWidth = 0.0;
-//            [MMPlaceHolderConfig defaultConfig].visibleKindOfClasses = @[UIImageView.class,UIView.class,UILabel.class,UIButton.class,UITableViewCell.class];
-    
-            //using it for frame debug
-//            [MMPlaceHolderConfig defaultConfig].autoDisplay = YES;
-//            [MMPlaceHolderConfig defaultConfig].autoDisplaySystemView = NO;
-//            [MMPlaceHolderConfig defaultConfig].showArrow = YES;
-//            [MMPlaceHolderConfig defaultConfig].showText = YES;
-    
-            //using it to control global visible
-            //   [MMPlaceHolderConfig defaultConfig].visible = YES;
-            
+    if (@available(ios 11.0,*)) {
+//        UIScrollView.appearance.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAlways;
+        UITableView.appearance.estimatedRowHeight = 0;
+        UITableView.appearance.estimatedSectionFooterHeight = 0;
+        UITableView.appearance.estimatedSectionHeaderHeight = 0;
+    }else{
+        if([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]){
+//            self.automaticallyAdjustsScrollViewInsets=NO;
+        }
+    }
     
 }
 
+-(int)getRandomNumber:(int)from to:(int)to{
+    return (int)(from + (arc4random() % (to - from + 1)));
+}
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
+    
 }
-
 @end

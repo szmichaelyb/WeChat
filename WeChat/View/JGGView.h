@@ -1,14 +1,14 @@
 //
 //  JGGView.h
-//  IHK
+//  AIHealth
 //
-//  Created by 郑文明 on 16/3/14.
-//  Copyright © 2016年 郑文明. All rights reserved.
+//  Created by 郑文明 on 2017/7/17.
+//  Copyright © 2017年 郑文明. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-///九宫格图片间隔
-#define kJGG_GAP 5
+
+#define kGAP 10
 /**
  *
  *  @param index      点击index
@@ -26,36 +26,4 @@ typedef void (^TapBlcok)(NSInteger index,NSArray *dataSource);
  */
 @property (nonatomic, copy)TapBlcok  tapBlock;
 
-/**
- *  Description 九宫格
- *
- *  @param frame      frame
- *  @param dataSource 数据源
- *  @param tapBlock tapBlock点击的block
- *  @return JGGView对象
- */
-- (instancetype)initWithFrame:(CGRect)frame dataSource:(NSArray *)dataSource completeBlock:(TapBlcok )tapBlock;
-
-
-/**
- *  Description 九宫格
- *
- *  @param dataSource 数据源
- *  @param tapBlock tapBlock点击的block
- *  @return JGGView对象
- */
--(void)JGGView:(JGGView *)jggView DataSource:(NSArray *)dataSource completeBlock:(TapBlcok)tapBlock;
-
-/**
- *  配置图片的宽（正方形，宽高一样）
- *
- *  @return 宽
- */
-+(CGFloat)imageWidth;
-/**
- *  配置图片的高（正方形，宽高一样）
- *
- *  @return 高
- */
-+(CGFloat)imageHeight;
 @end
